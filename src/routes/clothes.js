@@ -48,4 +48,16 @@ router.put('/clothes/:id', async (req, res, next) => {
   }
 });
 
+router.delete('/clothes/:id', async (req, res, next) => {
+  try {
+    await ClothesModel.destroy(
+      {
+        where: { id: +req.params.id },
+      });
+    res.status(200).send('successfully deleted');
+  } catch (err) {
+    next(err.message);
+  }
+});
+
 module.exports = router;
