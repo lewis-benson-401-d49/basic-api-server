@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.get('/food', async (req, res, next) => {
   try {
-    const clothes = await FoodModel.findAll();
-    res.status(200).send(clothes);
+    const food = await FoodModel.findAll();
+    res.status(200).send(food);
   } catch (err) {
     next(err.message);
   }
@@ -17,10 +17,10 @@ router.get('/food', async (req, res, next) => {
 router.get('/food/:id', async (req, res, next) => {
   try {
 
-    const clothesItem = await FoodModel.findOne({
+    const foodItem = await FoodModel.findOne({
       where: { id: +req.params.id },
     });
-    res.status(200).send(clothesItem);
+    res.status(200).send(foodItem);
   } catch (err) {
     next(err.message);
   }
@@ -28,8 +28,8 @@ router.get('/food/:id', async (req, res, next) => {
 
 router.post('/food', async (req, res, next) => {
   try {
-    const newClothes = await FoodModel.create(req.body);
-    res.status(200).send(newClothes);
+    const newFood = await FoodModel.create(req.body);
+    res.status(201).send(newFood);
   } catch (err) {
     next(err.message);
   }
@@ -42,7 +42,7 @@ router.put('/food/:id', async (req, res, next) => {
       {
         where: { id: +req.params.id },
       });
-    res.status(200).send(foodItem);
+    res.status(202).send(foodItem);
   } catch (err) {
     next(err.message);
   }
@@ -54,7 +54,7 @@ router.delete('/food/:id', async (req, res, next) => {
       {
         where: { id: +req.params.id },
       });
-    res.status(200).send('successfully deleted');
+    res.status(204).send('successfully deleted');
   } catch (err) {
     next(err.message);
   }
