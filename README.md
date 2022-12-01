@@ -1,13 +1,15 @@
-# LAB - 401-D49 Lab-02
+# LAB - 401-D49 Lab-03
 
-## Project: basic-express-server
+## Project: basic-api-server
 
 ### Author: Lewis Benson
 
 ### Problem Domain
 
-Dynamic API Phase 1: Build your core, standards compliant Express server
-From a business requirements standpoint, we will be building a basic Express server using best practices, including server modularization, use of middleware, and tests.
+Phase 2 Requirements: Build a REST API using Express, by creating a proper series of endpoints that perform CRUD operations on a database, using the REST standard
+Create 2 SQL data models using the Sequelize libary, make sure you export those model instances.
+Make sure your Models are configured with your SQL dialect and can properly connect to your database.
+Your models should have appropriate field names declared with specific sequelize DataTypes.
 
 ### Links and Resources
 
