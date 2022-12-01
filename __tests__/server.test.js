@@ -2,7 +2,7 @@
 const { app } = require('../src/server');
 const supertest = require('supertest');
 const request = supertest(app);
-const { SQLDb } = require('../src/models/index.js');
+const { SQLDb } = require('../src/models');
 
 beforeAll(async () => {
   await SQLDb.sync();
@@ -14,29 +14,14 @@ afterAll(async () => {
 
 
 describe('Rest API Server', () => {
-
   test('Creates a food item', async () => {
     let response = await (request.post('/food')).send({
       name: 'tester',
-      age: 42,
-      pronouns: 'they/them',
+      amount: 42,
     });
-
     expect(response.status).toEqual(200);
     expect(response.body.name).toEqual('tester');
-    expect(response.body.age).toEqual(42);
-
-  });
-  test('Creates a customer', async () => {
-    let response = await (request.post('/customer')).send({
-      name: 'tester',
-      age: 42,
-      pronouns: 'they/them',
-    });
-
-    expect(response.status).toEqual(200);
-    expect(response.body.name).toEqual('tester');
-    expect(response.body.age).toEqual(42);
+    expect(response.body.amount).toEqual(42);
 
   });
 
