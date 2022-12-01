@@ -15,6 +15,7 @@ Your models should have appropriate field names declared with specific sequelize
 
 - [ci/cd](https://github.com/tm-LBenson/basic-api-server/actions) (GitHub Actions)
 - [server-prod](https://four01-d49-basic-api.onrender.com/)
+- [db-prod](postgres://tm_lbenson:57Af2huVXU1cR50haeyet1HzfnKS161J@dpg-ce40715a499cum1nougg-a/api_app_z5xx)
 
 ### Setup
 
@@ -31,19 +32,25 @@ see `.env.sample`
 - Feature one: Deploy to Prod
 
 - GET : `/` - specific route to hit
-- `/food` : GET, POST, UPDATE, DELETE
-- `/clothes` : GET, POST, UPDATE, DELETE
+- `/food` : GET - read all items
+- `/food` : POST - create one item
+- `/food/:id` : GET - read one item
+- `/food/:id` : PUT - update one item
+- `/food/:id` : DELETE - delete one item
+
+- `/clothes` : GET - read all items
+- `/clothes` : POST - create one item
+- `/clothes/:id` : GET - read one item
+- `/clothes/:id` : PUT - update one item
+- `/clothes/:id` : DELETE - delete one item
 
 -Feature two: Add tests
 
 - Add tests for server
-- Add tests for validator
-- Add tests for logger
+- Add tests for each route
+- -Feature three: Add Database
 
--Feature three: Add Logger
-
-- Add logger.js to add a timestamp to the console when hitting endpoint
-- Add validator to send an error when a name is not provided
+- Create Database on Render.
 
 #### Tests
 
@@ -52,7 +59,7 @@ see `.env.sample`
 - Any tests of note?
   - handles root path
   - handles invalid paths
-  - handles error code 500
+  - handles every CRUD function
 - Describe any tests that you did not complete, skipped, etc
 
 #### UML
