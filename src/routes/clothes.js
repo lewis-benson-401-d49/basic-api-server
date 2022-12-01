@@ -29,7 +29,7 @@ router.get('/clothes/:id', async (req, res, next) => {
 router.post('/clothes', async (req, res, next) => {
   try {
     const newClothes = await ClothesModel.create(req.body);
-    res.status(200).send(newClothes);
+    res.status(201).send(newClothes);
   } catch (err) {
     next(err.message);
   }
@@ -42,7 +42,7 @@ router.put('/clothes/:id', async (req, res, next) => {
       {
         where: { id: +req.params.id },
       });
-    res.status(200).send(clothesItem);
+    res.status(202).send(clothesItem);
   } catch (err) {
     next(err.message);
   }
@@ -54,7 +54,7 @@ router.delete('/clothes/:id', async (req, res, next) => {
       {
         where: { id: +req.params.id },
       });
-    res.status(200).send('successfully deleted');
+    res.status(204).send('successfully deleted');
   } catch (err) {
     next(err.message);
   }
