@@ -19,10 +19,88 @@ describe('Rest API Server', () => {
       name: 'tester',
       amount: 42,
     });
-    expect(response.status).toEqual(200);
+    expect(response.status).toEqual(201);
     expect(response.body.name).toEqual('tester');
     expect(response.body.amount).toEqual(42);
 
+  });
+
+  test('Updates a food item', async () => {
+    let response = await (request.put('/food/1')).send({
+      name: 'tester',
+      amount: 42,
+    });
+    expect(response.status).toEqual(202);
+    expect(response.body[0]).toEqual(1);
+
+  });
+
+  test('Deletes a food item', async () => {
+    let response = await (request.delete('/food/1')).send({
+      name: 'tester',
+      amount: 42,
+    });
+    expect(response.status).toEqual(204);
+    expect(response.text).toEqual('');
+
+  });
+
+  test('Read a food item', async () => {
+    let response = await (request.get('/food/1')).send({
+      name: 'tester',
+      amount: 42,
+    });
+    expect(response.status).toEqual(200);
+  });
+
+
+  test('Creates a clothes item', async () => {
+    let response = await (request.post('/clothes')).send({
+      name: 'tester',
+      amount: 42,
+    });
+    expect(response.status).toEqual(201);
+    expect(response.body.name).toEqual('tester');
+    expect(response.body.amount).toEqual(42);
+
+  });
+
+  test('Updates a clothes item', async () => {
+    let response = await (request.put('/clothes/1')).send({
+      name: 'tester',
+      amount: 42,
+    });
+    expect(response.status).toEqual(202);
+    expect(response.body[0]).toEqual(1);
+
+  });
+
+  test('Deletes a clothes item', async () => {
+    let response = await (request.delete('/clothes/1')).send({
+      name: 'tester',
+      amount: 42,
+    });
+    expect(response.status).toEqual(204);
+    expect(response.text).toEqual('');
+
+  });
+
+  test('Read a clothes item', async () => {
+    let response = await (request.get('/clothes/1')).send({
+      name: 'tester',
+      amount: 42,
+    });
+    expect(response.status).toEqual(200);
+  });
+
+  test('Sends a 404 error on a bad path', async () => {
+    let response = await (request.get('/bad')).send();
+    expect(response.status).toEqual(404);
+  });
+
+  test('Sends a 404 error on a bad method', async () => {
+    let response = await (request.delete('/food')).send();
+    expect(response.status).toEqual(404);
   });
 
 });
