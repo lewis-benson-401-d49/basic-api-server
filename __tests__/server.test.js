@@ -13,7 +13,7 @@ afterAll(async () => {
 });
 
 
-describe('Rest API Server', () => {
+xdescribe('Rest API Server', () => {
   test('Creates a food item', async () => {
     let response = await (request.post('/food')).send({
       name: 'tester',
