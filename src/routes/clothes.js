@@ -14,10 +14,35 @@ router.get('/clothes', async (req, res, next) => {
   }
 });
 
+router.get('/clothes/:id', async (req, res, next) => {
+  try {
+
+    const clothesItem = await ClothesModel.findOne({
+      where: { id: +req.params.id },
+    });
+    res.status(200).send(clothesItem);
+  } catch (err) {
+    next(err.message);
+  }
+});
+
 router.post('/clothes', async (req, res, next) => {
   try {
     const newClothes = await ClothesModel.create(req.body);
     res.status(200).send(newClothes);
+  } catch (err) {
+    next(err.message);
+  }
+});
+
+router.put('/clothes/:id', async (req, res, next) => {
+  try {
+    const clothesItem = await ClothesModel.update(
+      req.body,
+      {
+        where: { id: +req.params.id },
+      });
+    res.status(200).send(clothesItem);
   } catch (err) {
     next(err.message);
   }
